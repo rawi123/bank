@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './header/Header'
 import { BrowserRouter, Route } from 'react-router-dom'
-
+import "./app.css"
 export default function App() {
     return (
         <div>
