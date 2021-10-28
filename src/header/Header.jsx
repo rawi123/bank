@@ -38,6 +38,11 @@ export default function Header({ logedInProp, handelLogOutCB }) {
 											Transition
 										</Link>
 									</li>
+									<li>
+										{Object.keys(logedIn).length !== 0 && logedIn.admin ? (
+											<Link to={'/adminTrans'}>Admin</Link>
+										) : null}
+									</li>
 								</ul>
 							</div>
 							<div className="login">
@@ -54,27 +59,38 @@ export default function Header({ logedInProp, handelLogOutCB }) {
 				</div>
 			</div>
 			<div className="header">
-			<nav>
-				<div className="logo-ul">
-					<div className="logo">
-						<Link to="/" className="logo-link"/>
+				<nav>
+					<div className="logo-ul">
+						<div className="logo">
+							<Link to="/" className="logo-link" />
+						</div>
+						<ul>
+							<li>
+								<Link to={Object.keys(logedIn).length !== 0 ? '/account' : '/login'}>Account</Link>
+							</li>
+							<li>
+								<Link to={Object.keys(logedIn).length !== 0 ? '/transaction' : '/login'}>
+									Transaction
+								</Link>
+							</li>
+							<li>
+								{Object.keys(logedIn).length !== 0 && logedIn.admin ? (
+									<Link to={'/adminTrans'}>Admin</Link>
+								) : null}
+							</li>
+						</ul>
 					</div>
-					<ul>
-						<li>
-							<Link to={Object.keys(logedIn).length!==0 ? '/account' : '/login'}>Account</Link>
-						</li>
-						<li>
-							<Link to={Object.keys(logedIn).length!==0 ? '/transaction' : '/login'}>Transaction</Link>
-						</li>
-					</ul>
-				</div>
-				<div className="login">
-					{Object.keys(logedIn).length!==0 ? (<Link onClick={handelLogOutCB} to="/login">Log Out</Link>) : (
-						<Link to="/login">Log In</Link>
-					)}
-				</div>
-			</nav>
-		</div>
+					<div className="login">
+						{Object.keys(logedIn).length !== 0 ? (
+							<Link onClick={handelLogOutCB} to="/login">
+								Log Out
+							</Link>
+						) : (
+							<Link to="/login">Log In</Link>
+						)}
+					</div>
+				</nav>
+			</div>
 		</React.Fragment>
 	);
 }

@@ -9,6 +9,7 @@ import RegisterForm from './Login.register/RegisterForm'
 import Account from './Account/Account'
 import Home from './Home/Home'
 import "./app.css"
+import Admin from './Admin/Admin'
 
 export default function App() {
     const [loggedUser, setLoggedUser] = useState(JSON.parse(sessionStorage.getItem("user"))||{})//user obj
@@ -66,6 +67,10 @@ export default function App() {
                         <Route exact path="/transaction">
                             <Transaction  returnedUser={handleTransaction} user={loggedUser} users={users}/>
                         </Route>
+                        {loggedUser.admin?<Route exact path="/adminTrans">
+                            <Admin  loggedUser={loggedUser} users={users}/>
+                        </Route>:null}
+
                     </Switch>
                 </div>
             </BrowserRouter>

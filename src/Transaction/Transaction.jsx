@@ -23,6 +23,7 @@ export default function Transaction({ returnedUser, user, users }) {
 			userId: id
 		};
 	};
+	
 	const onFormSubmit = async ({ price, reason }) => {
         if(clicked){
             setMessage("please wait")
@@ -50,12 +51,14 @@ export default function Transaction({ returnedUser, user, users }) {
 		returnedUser(temp.data);
 		const user2 = (await getSingleUser(selectValue)).data;
 		const admin=users.filter(val=>val.admin)[0]
-		console.log( await updateUser(admin.id,{balance:admin.balance+10}).data);
+		await updateUser(admin.id,{balance:admin.balance+10}).data;
 		let transaction1 = createTransaction(false, price, reason, user2.name);
 		let transaction2 = createTransaction(true, price, reason, user2.name, user2.id);
+		let adminTransAction=createTransaction(true,20,"tax",user.name,admin.id)
 		await postTransaction(user.id, transaction1);
 		await postTransaction(selectValue, transaction2);
-        history.push('/login');
+		await postTransaction(admin.id, adminTransAction);
+        history.push('/');
 	};
 
 	if (Object.keys(user).length === 0) {

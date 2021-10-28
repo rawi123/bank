@@ -35,7 +35,6 @@ const Account = ({selectedUser,updateActive}) => {
     return (
         
     <div className='container'>
-        {console.log(user)}
         <div className="left-content">
             <div className="balance">
                     <div>
@@ -74,7 +73,7 @@ const Account = ({selectedUser,updateActive}) => {
                     </ul>
                   </div>
                   <button className="active" onClick={handelActive}>Activate/InActive</button>
-                  <button className="active" onClick={handelActive}>Edit Credit Limit</button>
+                  {/* <button className="active" onClick={handelActive}>Edit Credit Limit</button> */}
             </div>
             
             <div className="right-content">
@@ -86,7 +85,7 @@ const Account = ({selectedUser,updateActive}) => {
                 <option value="Expenses">Expenses</option></select>
                </div>
           {
-            transition==='Revenue'?<Revenue name={user.name} userBankTransaction={filterRevenues()}/>:<Expenses name={user.name}  userBankTransaction={filterExpendes()}/>
+            transition!=='Revenue'?<Revenue name={user.name} userBankTransaction={filterRevenues()}/>:<Expenses name={user.name}  userBankTransaction={filterExpendes()}/>
         }
         </div>
         </div>

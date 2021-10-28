@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 const LastTransactions = ({name,lastTransactions}) => {
     const [transaction,setTransaction]=useState(lastTransactions)
     useEffect(()=>{
-        console.log('im in last',lastTransactions);
         setTransaction(lastTransactions)
     },[lastTransactions])
     return ( 
