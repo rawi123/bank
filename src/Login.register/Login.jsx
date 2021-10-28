@@ -1,7 +1,7 @@
 import React from 'react';
 import './login-style.css';
 
-export default function Login({user,Children}) {
+export default function Login({Children}) {
 
 	return (
 		<React.Fragment>
