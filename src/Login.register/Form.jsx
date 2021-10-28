@@ -37,6 +37,7 @@ export default function Form({ user, usersProp, handelLoginCB }) {
 	}
 	return (
 		<div className="login-card-form">
+		{console.log(usersProp,"users ",users)}
 			<h4>AR BANK</h4>
 			<div className="login-input">
 				<input type="text" name="username" placeholder="username/email" onChange={(e) => handelChange(e)} />
